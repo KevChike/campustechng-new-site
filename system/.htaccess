@@ -1,0 +1,3 @@
+# Restricting total access to this directory from the browser ############
+Deny from all
+

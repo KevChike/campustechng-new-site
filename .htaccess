@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /ctl/ctlsite/
+
+	RewriteCond %{REQUEST_URI} !(/$|\.) 
+	RewriteRule (.*) %{REQUEST_URI}/ [R=301,L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^([^/]*)/$ index.php?page=$1 [QSA,L]
+
+	#404 error page #####
+	ErrorDocument 404 /ctl/ctlsite/404/
+
+	#403 error page #####
+	ErrorDocument 403 /ctl/ctlsite/403/
+
+	#500 error page #####
+	ErrorDocument 500 /ctl/ctlsite/403/
+</IfModule>
